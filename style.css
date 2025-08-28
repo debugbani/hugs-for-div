@@ -1,0 +1,139 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #ffeaf4;
+  font-family: "Comic Sans MS", cursive;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.bunny {
+  position: relative;
+  width: 150px;
+  height: 180px;
+  background: #fff;
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* ears */
+.ear {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  top: -60px;
+}
+.ear.left { left: 10px; transform: rotate(-10deg); }
+.ear.right { right: 10px; transform: rotate(10deg); }
+
+/* face */
+.face {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 80px;
+}
+
+.eye {
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  animation: blink 4s infinite;
+}
+.eye.left { left: 15px; }
+.eye.right { right: 15px; }
+
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+.nose {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.mouth {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 25px;
+  height: 15px;
+  border-bottom: 3px solid black;
+  border-radius: 0 0 50% 50%;
+  transform: translateX(-50%);
+}
+
+/* arms */
+.arm {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: #fff;
+  border-radius: 20px;
+  top: 100px;
+  transition: all 0.5s ease;
+}
+.arm.left { left: -30px; }
+.arm.right { right: -30px; }
+
+/* hug animation */
+.bunny.hug .arm.left {
+  transform: translateX(-40px) rotate(-20deg);
+}
+.bunny.hug .arm.right {
+  transform: translateX(40px) rotate(20deg);
+}
+
+/* hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: floatUp 2s ease forwards;
+}
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0) scale(1) rotate(45deg); }
+  100% { opacity: 0; transform: translateY(-100px) scale(1.5) rotate(45deg); }
+}
+
+/* message */
+#message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #d63384;
+  font-weight: bold;
+}
